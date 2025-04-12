@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+
+
+//plugins {
+//    alias(libs.plugins.android.application)
+//}
+
+android {
+    namespace 'com.example.voiceassistant_1'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.example.voiceassistant_1"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "PICOVOICE_ACCESS_KEY", PICOVOICE_ACCESS_KEY
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+// Gson for JSON
+    implementation 'com.google.code.gson:gson:2.10'
+
+    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.google.ai.client.generativeai:generativeai:0.9.0'
+    implementation "com.google.guava:guava:31.1-android"
+    implementation 'androidx.concurrent:concurrent-futures:1.1.0'
+    implementation 'ai.picovoice:porcupine-android:2.2.0'
+//    implementation 'ai.picovoice:porcupine-android:3.0.2'
+
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    implementation libs.lottie
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+
+}
